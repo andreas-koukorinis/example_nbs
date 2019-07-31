@@ -1,0 +1,1 @@
+Note: bb/bb_coint_basis_distribution.ipynb contains basis smoothing code

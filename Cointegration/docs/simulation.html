@@ -1,0 +1,67 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module simulation</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>simulation</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/tspooner/stratagem-research-base/sgmresearchbase/analysis/cointegration/simulation.py">/home/tspooner/stratagem-research-base/sgmresearchbase/analysis/cointegration/simulation.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-dgp"><strong>dgp</strong></a>(alpha<font color="#909090">=array([[-0.2, -0.2, -0.2],
+       [ 0.2, -0.2, -...  [ 0.2,  0.2, -0.2],
+       [ 0.2,  0.2,  0.2]])</font>, beta<font color="#909090">=array([[ 1.,  0.,  0.],
+       [ 0.,  1.,  0.],
+       [ 0.,  0.,  1.],
+       [-1., -1., -1.]])</font>)</dt><dd><tt>Generate&nbsp;a&nbsp;cointegrating,&nbsp;multivariate&nbsp;time&nbsp;series&nbsp;(ECM&nbsp;model)&nbsp;from&nbsp;the<br>
+alpha&nbsp;and&nbsp;beta&nbsp;matrices&nbsp;using&nbsp;the&nbsp;method&nbsp;described&nbsp;in&nbsp;Sugita&nbsp;("Bayesian<br>
+Analysis&nbsp;of&nbsp;Dynamic&nbsp;Multivariate&nbsp;Models&nbsp;with&nbsp;Multiple&nbsp;Structural&nbsp;Breaks").<br>
+&nbsp;<br>
+Note&nbsp;that&nbsp;alpha&nbsp;and&nbsp;beta&nbsp;must&nbsp;satisfy&nbsp;the&nbsp;stability&nbsp;condition&nbsp;abs(rho(I&nbsp;+<br>
+np.dot(beta.T,alpha)))&nbsp;&lt;&nbsp;1,&nbsp;where&nbsp;rho&nbsp;is&nbsp;the&nbsp;spectral&nbsp;radius.<br>
+&nbsp;<br>
+:param&nbsp;alpha:<br>
+:param&nbsp;beta:<br>
+:return:&nbsp;Cointegrating,&nbsp;multivariate&nbsp;time&nbsp;series.</tt></dd></dl>
+ <dl><dt><a name="-dgp2"><strong>dgp2</strong></a>(ts_dim, rank_dim, eigen_adjust<font color="#909090">=0.1</font>, t_term<font color="#909090">=540</font>)</dt><dd><tt>Generate&nbsp;a&nbsp;cointegrating&nbsp;multivariate&nbsp;time&nbsp;series&nbsp;with&nbsp;a&nbsp;given&nbsp;speed&nbsp;of<br>
+mean&nbsp;reversion&nbsp;in&nbsp;the&nbsp;implied&nbsp;spread&nbsp;series.<br>
+&nbsp;<br>
+Note&nbsp;that&nbsp;eigen_adjust&nbsp;must&nbsp;lie&nbsp;in&nbsp;the&nbsp;range&nbsp;[0,&nbsp;1].<br>
+&nbsp;<br>
+:param&nbsp;ts_dim:&nbsp;Dimension&nbsp;of&nbsp;multivariate&nbsp;time&nbsp;series.<br>
+:param&nbsp;rank_dim:&nbsp;Cointegration&nbsp;rank.<br>
+:param&nbsp;eigen_adjust:&nbsp;Speed&nbsp;of&nbsp;mean&nbsp;reversion&nbsp;([0,&nbsp;1]).<br>
+:return:&nbsp;Cointegrating&nbsp;time&nbsp;series.</tt></dd></dl>
+ <dl><dt><a name="-dgp_rw"><strong>dgp_rw</strong></a>(corr<font color="#909090">=0.95</font>)</dt><dd><tt>Generate&nbsp;a&nbsp;multivariate&nbsp;time&nbsp;series&nbsp;with&nbsp;correlation&nbsp;rho&nbsp;(corr).<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;particularly&nbsp;useful&nbsp;for&nbsp;showing&nbsp;that&nbsp;cointegration&nbsp;is&nbsp;not<br>
+equivalent&nbsp;to&nbsp;correlation.<br>
+&nbsp;<br>
+:param&nbsp;corr:&nbsp;Correlation&nbsp;coefficient.<br>
+:return:&nbsp;Correlated&nbsp;time&nbsp;series.</tt></dd></dl>
+ <dl><dt><a name="-gen_ar1"><strong>gen_ar1</strong></a>(n, alpha<font color="#909090">=0.5</font>, sigma<font color="#909090">=1</font>)</dt><dd><tt>Generate&nbsp;autocorrelated&nbsp;time&nbsp;series&nbsp;with&nbsp;autoregression&nbsp;coefficient&nbsp;a&nbsp;and<br>
+Gaussian&nbsp;noise&nbsp;with&nbsp;standard&nbsp;deviation&nbsp;sigma.<br>
+&nbsp;<br>
+:param&nbsp;alpha:&nbsp;Autoregression&nbsp;coefficient<br>
+:param&nbsp;sigm:&nbsp;error&nbsp;noise<br>
+:return:&nbsp;generate&nbsp;AR(1)&nbsp;time&nbsp;series</tt></dd></dl>
+</td></tr></table>
+</body></html>

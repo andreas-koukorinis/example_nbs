@@ -1,0 +1,185 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module johansen</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>johansen</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/tspooner/stratagem-research-base/sgmresearchbase/analysis/cointegration/johansen.py">/home/tspooner/stratagem-research-base/sgmresearchbase/analysis/cointegration/johansen.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="sgmresearchbase.analysis.cointegration.critical_values.html">sgmresearchbase.analysis.cointegration.critical_values</a><br>
+</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="johansen.html#Johansen">Johansen</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="exceptions.html#Exception">exceptions.Exception</a>(<a href="exceptions.html#BaseException">exceptions.BaseException</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="johansen.html#JohansenError">JohansenError</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Johansen">class <strong>Johansen</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Implementation&nbsp;of&nbsp;the&nbsp;<a href="#Johansen">Johansen</a>&nbsp;test&nbsp;for&nbsp;cointegration.<br>
+&nbsp;<br>
+References:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Hamilton,&nbsp;J.&nbsp;D.&nbsp;(1994)&nbsp;'Time&nbsp;Series&nbsp;Analysis',&nbsp;Princeton&nbsp;Univ.&nbsp;Press.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;MacKinnon,&nbsp;Haug,&nbsp;Michelis&nbsp;(1996)&nbsp;'Numerical&nbsp;distribution&nbsp;functions&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;likelihood&nbsp;ratio&nbsp;tests&nbsp;for&nbsp;cointegration',&nbsp;Queen's&nbsp;University&nbsp;Institute<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;Economic&nbsp;Research&nbsp;Discussion&nbsp;paper.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Johansen-__init__"><strong>__init__</strong></a>(self, x, model, k<font color="#909090">=1</font>, trace<font color="#909090">=True</font>, significance_level<font color="#909090">=1</font>)</dt><dd><tt>:param&nbsp;x:&nbsp;(nobs,&nbsp;m)&nbsp;array&nbsp;of&nbsp;time&nbsp;series.&nbsp;nobs&nbsp;is&nbsp;the&nbsp;number&nbsp;of<br>
+observations,&nbsp;or&nbsp;time&nbsp;stamps,&nbsp;and&nbsp;m&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;series.<br>
+:param&nbsp;k:&nbsp;The&nbsp;number&nbsp;of&nbsp;lags&nbsp;to&nbsp;use&nbsp;when&nbsp;regressing&nbsp;on&nbsp;the&nbsp;first<br>
+difference&nbsp;of&nbsp;x.<br>
+:param&nbsp;trace:&nbsp;Whether&nbsp;to&nbsp;use&nbsp;the&nbsp;trace&nbsp;or&nbsp;max&nbsp;eigenvalue&nbsp;statistic&nbsp;for<br>
+the&nbsp;hypothesis&nbsp;testing.&nbsp;If&nbsp;False&nbsp;the&nbsp;latter&nbsp;is&nbsp;used.<br>
+:param&nbsp;model:&nbsp;Which&nbsp;of&nbsp;the&nbsp;five&nbsp;cases&nbsp;in&nbsp;Osterwald-Lenum&nbsp;1992&nbsp;(or<br>
+MacKinnon&nbsp;1996)&nbsp;to&nbsp;use.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;If&nbsp;set&nbsp;to&nbsp;0,&nbsp;case&nbsp;0&nbsp;will&nbsp;be&nbsp;used.&nbsp;This&nbsp;case&nbsp;should&nbsp;be&nbsp;used&nbsp;if<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;input&nbsp;time&nbsp;series&nbsp;have&nbsp;no&nbsp;deterministic&nbsp;terms&nbsp;and&nbsp;all&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cointegrating&nbsp;relations&nbsp;are&nbsp;expected&nbsp;to&nbsp;have&nbsp;0&nbsp;mean.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;If&nbsp;set&nbsp;to&nbsp;1,&nbsp;case&nbsp;1*&nbsp;will&nbsp;be&nbsp;used.&nbsp;This&nbsp;case&nbsp;should&nbsp;be&nbsp;used&nbsp;if<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;input&nbsp;time&nbsp;series&nbsp;has&nbsp;neither&nbsp;a&nbsp;quadratic&nbsp;nor&nbsp;linear&nbsp;trend,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;but&nbsp;may&nbsp;have&nbsp;a&nbsp;constant&nbsp;term,&nbsp;and&nbsp;additionally&nbsp;if&nbsp;the&nbsp;cointegrating<br>
+&nbsp;&nbsp;&nbsp;&nbsp;relations&nbsp;may&nbsp;have&nbsp;nonzero&nbsp;means.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;If&nbsp;set&nbsp;to&nbsp;2,&nbsp;case&nbsp;1&nbsp;will&nbsp;be&nbsp;used.&nbsp;This&nbsp;case&nbsp;should&nbsp;be&nbsp;used&nbsp;if<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;input&nbsp;time&nbsp;series&nbsp;have&nbsp;linear&nbsp;trends&nbsp;but&nbsp;the&nbsp;cointegrating<br>
+&nbsp;&nbsp;&nbsp;&nbsp;relations&nbsp;are&nbsp;not&nbsp;expected&nbsp;to&nbsp;have&nbsp;linear&nbsp;trends.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;If&nbsp;set&nbsp;to&nbsp;3,&nbsp;case&nbsp;2*&nbsp;will&nbsp;be&nbsp;used.&nbsp;This&nbsp;case&nbsp;should&nbsp;be&nbsp;used&nbsp;if<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;input&nbsp;time&nbsp;series&nbsp;do&nbsp;not&nbsp;have&nbsp;quadratic&nbsp;trends,&nbsp;but&nbsp;they&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;cointegrating&nbsp;relations&nbsp;may&nbsp;have&nbsp;linear&nbsp;trends.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;If&nbsp;set&nbsp;to&nbsp;4,&nbsp;case&nbsp;2&nbsp;will&nbsp;be&nbsp;used.&nbsp;This&nbsp;case&nbsp;should&nbsp;be&nbsp;used&nbsp;if<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;input&nbsp;time&nbsp;series&nbsp;have&nbsp;quadratic&nbsp;trends,&nbsp;but&nbsp;the&nbsp;cointegrating<br>
+&nbsp;&nbsp;&nbsp;&nbsp;relations&nbsp;are&nbsp;expected&nbsp;to&nbsp;only&nbsp;have&nbsp;linear&nbsp;trends.<br>
+:param&nbsp;significance_level:&nbsp;Which&nbsp;significance&nbsp;level&nbsp;to&nbsp;use.&nbsp;If&nbsp;set&nbsp;to<br>
+0,&nbsp;90%&nbsp;significance&nbsp;will&nbsp;be&nbsp;used.&nbsp;If&nbsp;set&nbsp;to&nbsp;1,&nbsp;95%&nbsp;will&nbsp;be&nbsp;used.&nbsp;If&nbsp;set<br>
+to&nbsp;2,&nbsp;99%&nbsp;will&nbsp;be&nbsp;used.</tt></dd></dl>
+
+<dl><dt><a name="Johansen-h_test"><strong>h_test</strong></a>(self, eigenvalues, r)</dt><dd><tt>Carry&nbsp;out&nbsp;hypothesis&nbsp;test.<br>
+&nbsp;<br>
+The&nbsp;null&nbsp;hypothesis&nbsp;is&nbsp;that&nbsp;there&nbsp;are&nbsp;at&nbsp;most&nbsp;r&nbsp;cointegrating&nbsp;vectors.<br>
+The&nbsp;alternative&nbsp;hypothesis&nbsp;is&nbsp;that&nbsp;there&nbsp;are&nbsp;at&nbsp;most&nbsp;m&nbsp;cointegrating<br>
+vectors,&nbsp;where&nbsp;m&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;input&nbsp;time&nbsp;series.<br>
+&nbsp;<br>
+:param&nbsp;eigenvalues:&nbsp;The&nbsp;list&nbsp;of&nbsp;eigenvalues&nbsp;returned&nbsp;from&nbsp;the&nbsp;mle<br>
+function.<br>
+:param&nbsp;r:&nbsp;The&nbsp;number&nbsp;of&nbsp;cointegrating&nbsp;vectors&nbsp;to&nbsp;use&nbsp;in&nbsp;the&nbsp;null<br>
+hypothesis.<br>
+:return:&nbsp;True&nbsp;if&nbsp;the&nbsp;null&nbsp;hypothesis&nbsp;is&nbsp;rejected,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Johansen-johansen"><strong>johansen</strong></a>(self)</dt><dd><tt>Obtain&nbsp;the&nbsp;possible&nbsp;cointegrating&nbsp;relations&nbsp;and&nbsp;numbers&nbsp;of&nbsp;them.<br>
+&nbsp;<br>
+See&nbsp;the&nbsp;documentation&nbsp;for&nbsp;methods&nbsp;mle&nbsp;and&nbsp;h_test.<br>
+&nbsp;<br>
+:return:&nbsp;The&nbsp;possible&nbsp;cointegrating&nbsp;relations,&nbsp;i.e.&nbsp;the&nbsp;eigenvectors<br>
+obtained&nbsp;from&nbsp;maximum&nbsp;likelihood&nbsp;estimation,&nbsp;and&nbsp;the&nbsp;numbers&nbsp;of<br>
+cointegrating&nbsp;relations&nbsp;for&nbsp;which&nbsp;the&nbsp;null&nbsp;hypothesis&nbsp;is&nbsp;rejected.</tt></dd></dl>
+
+<dl><dt><a name="Johansen-mle"><strong>mle</strong></a>(self)</dt><dd><tt>Obtain&nbsp;the&nbsp;cointegrating&nbsp;vectors&nbsp;and&nbsp;corresponding&nbsp;eigenvalues.<br>
+&nbsp;<br>
+Maximum&nbsp;likelihood&nbsp;estimation&nbsp;and&nbsp;reduced&nbsp;rank&nbsp;regression&nbsp;are&nbsp;used&nbsp;to<br>
+obtain&nbsp;the&nbsp;cointegrating&nbsp;vectors&nbsp;and&nbsp;corresponding&nbsp;eigenvalues,&nbsp;as<br>
+outlined&nbsp;in&nbsp;Hamilton&nbsp;1994.<br>
+&nbsp;<br>
+:return:&nbsp;The&nbsp;possible&nbsp;cointegrating&nbsp;vectors,&nbsp;i.e.&nbsp;the&nbsp;eigenvectors<br>
+resulting&nbsp;from&nbsp;maximum&nbsp;likelihood&nbsp;estimation&nbsp;and&nbsp;reduced&nbsp;rank<br>
+regression,&nbsp;and&nbsp;the&nbsp;corresponding&nbsp;eigenvalues.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="JohansenError">class <strong>JohansenError</strong></a>(<a href="exceptions.html#Exception">exceptions.Exception</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="johansen.html#JohansenError">JohansenError</a></dd>
+<dd><a href="exceptions.html#Exception">exceptions.Exception</a></dd>
+<dd><a href="exceptions.html#BaseException">exceptions.BaseException</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="exceptions.html#Exception">exceptions.Exception</a>:<br>
+<dl><dt><a name="JohansenError-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#JohansenError-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;help(type(x))&nbsp;for&nbsp;signature</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="exceptions.html#Exception">exceptions.Exception</a>:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object&gt;<dd><tt>T.<a href="#JohansenError-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><a name="JohansenError-__delattr__"><strong>__delattr__</strong></a>(...)</dt><dd><tt>x.<a href="#JohansenError-__delattr__">__delattr__</a>('name')&nbsp;&lt;==&gt;&nbsp;del&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="JohansenError-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#JohansenError-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="JohansenError-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#JohansenError-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="JohansenError-__getslice__"><strong>__getslice__</strong></a>(...)</dt><dd><tt>x.<a href="#JohansenError-__getslice__">__getslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="JohansenError-__reduce__"><strong>__reduce__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="JohansenError-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#JohansenError-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="JohansenError-__setattr__"><strong>__setattr__</strong></a>(...)</dt><dd><tt>x.<a href="#JohansenError-__setattr__">__setattr__</a>('name',&nbsp;value)&nbsp;&lt;==&gt;&nbsp;x.name&nbsp;=&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="JohansenError-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="JohansenError-__str__"><strong>__str__</strong></a>(...)</dt><dd><tt>x.<a href="#JohansenError-__str__">__str__</a>()&nbsp;&lt;==&gt;&nbsp;str(x)</tt></dd></dl>
+
+<dl><dt><a name="JohansenError-__unicode__"><strong>__unicode__</strong></a>(...)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+<dl><dt><strong>message</strong></dt>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

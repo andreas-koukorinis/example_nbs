@@ -1,0 +1,51 @@
+\usepackage[T1]{fontenc}
+\usepackage[a4paper, total={6.5in, 9in}]{geometry}
+
+% Imports:
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{minted}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{palatino}
+\usepackage{todonotes}
+\usepackage{subcaption}
+
+\usepackage[inline]{enumitem}
+\setlist[description]{font=\normalfont}
+
+\usepackage{nomencl}
+\makenomenclature%
+
+
+\definecolor{peach}{RGB}{247, 120, 107} % rgb(247, 120, 107)
+\definecolor{rose}{RGB}{247,202,201} % rgb(247,202,201)
+\definecolor{green}{RGB}{121, 199, 83} % rgb(121, 199, 83)
+\definecolor{coffee}{RGB}{177,143,106} % rgb(177,143,106)
+\definecolor{serenity}{RGB}{145,168,208} % rgb(145,168,208)
+\definecolor{yellow}{RGB}{250,224,60} % rgb(250,224,60)
+\definecolor{red}{RGB}{221,65,50} % rgb(221,65,50)
+\definecolor{blue}{RGB}{3,79,132} % rgb(3,79,132)
+\definecolor{limpet}{RGB}{152,221,222} % rgb(152,221,222)
+
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=rose, fill=rose!80]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=yellow, fill=yellow!80]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=limpet, fill=limpet!80]
+\tikzstyle{api} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=peach, fill=peach!80]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=green, fill=green!80, text width=2.5cm]
+\tikzstyle{arrow} = [thick,->,>=stealth, draw=coffee]
+
+%% LABELS DEFINITIONS
+\tikzstyle{orangeLabel} = [rectangle, rounded corners, text centered, draw=orange, fill=orange!80]
+\tikzstyle{peachLabel} = [rectangle, rounded corners, text centered, draw=peach, fill=peach!80]
+\tikzstyle{roseLabel} = [rectangle, rounded corners, text centered, draw=rose, fill=rose!80]
+\tikzstyle{greenLabel} = [rectangle, rounded corners, text centered, draw=green, fill=green!80]
+\tikzstyle{coffeeLabel} = [rectangle, rounded corners, text centered, draw=coffee, fill=coffee!80]
+\tikzstyle{serenityLabel} = [rectangle, rounded corners, text centered, draw=serenity, fill=serenity!80]
+\tikzstyle{yellowLabel} = [rectangle, rounded corners, text centered, draw=yellow, fill=yellow!80]
+\tikzstyle{redLabel} = [rectangle, rounded corners, text centered, draw=red, fill=red!80]
+\tikzstyle{blueLabel} = [rectangle, rounded corners, text centered, draw=blue, fill=blue!80]
+\tikzstyle{limpetLabel} = [rectangle, rounded corners, text centered, draw=limpet, fill=limpet!80]

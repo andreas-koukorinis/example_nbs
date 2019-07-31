@@ -1,0 +1,89 @@
+\section{MPC}
+The main strategy developed was the market price cointegration (MPC) strategy.
+
+\subsection*{Parameters}
+The strategy descriptor tells the framework which pair to trade and provides
+arguments to that type.  For example, one pair that has been implemented is
+\mintinline{python}{FT12_TGOU}, which corresponds to the full-time moneyline
+and total games over/under markets. We may also choose to provide parameters to
+this pair, the exact specification of which are dictated by the implementation.
+Consider, for example, trading FT12, A versus B, on exclusively ATP matches.
+Such a code would take the following form: \textbf{ft12\_tennis.ATP}. Note that
+the pair and it's arguments come before and after the period, respectively.
+Some further examples are given below:
+\begin{itemize}
+    \item \textbf{ft12\_tennis.ATP} --- full-time moneyline, A versus B, on ATP
+        matches.
+    \item \textbf{ft12\_tgou.ATP} --- full-time moneyline versus total games
+        over/under, on ATP matches.
+\end{itemize}
+
+
+\subsection{Mark 0 (COR)}
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[node distance=1.5cm]
+        \node (node0) [startstop] {Signal request};
+        \node (node1) [process, below of=node0] {Compute time series $X$(n, m)};
+
+        \node (node2) [decision, below of=node1, yshift=-1.5cm] {Is cointegrated?};
+        \node (node3) [io, right of=node2, xshift=3cm] {$0\cdot \bm{\beta}$};
+
+        \node (node4) [process, below of=node2, yshift=-1.5cm] {Compute basis $\bm{\beta}$(1, m)};
+        \node (node5) [process, below of=node4] {Compute spread $z(n, 1)$};
+        \node (node6) [process, below of=node5] {Compute gradient $\nabla$};
+
+        \node (node7) [decision, below of=node6, yshift=-1.5cm] {Is significant?};
+        \node (node8) [io, below of=node7, yshift=-1.5cm] {$\frac{\nabla}{|\nabla|} \cdot \bm{\beta}$};
+        \node (node9) [io, right of=node7, xshift=3cm] {$0\cdot \bm{\beta}$};
+
+        \draw [arrow] (node0) -- (node1);
+        \draw [arrow] (node1) -- (node2);
+        \draw [arrow] (node2) --node[anchor=south] {N} (node3);
+        \draw [arrow] (node2) --node[anchor=west] {Y} (node4);
+        \draw [arrow] (node4) -- (node5);
+        \draw [arrow] (node5) -- (node6);
+        \draw [arrow] (node6) -- (node7);
+        \draw [arrow] (node7) --node[anchor=south] {N} (node9);
+        \draw [arrow] (node7) --node[anchor=west] {Y} (node8);
+    \end{tikzpicture}
+\end{figure}
+
+
+\subsection{Mark 1 (MR)}
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[node distance=1.5cm]
+        \node (node0) [startstop] {Signal request};
+        \node (node1) [process, below of=node0] {Compute time series $X$(n, m)};
+        \node (node2) [process, below of=node1] {Compute basis $\bm{\beta}$(1, m)};
+        \node (node3) [process, below of=node2] {Compute spread $z$};
+        \node (node4) [decision, below of=node3, yshift=-1.5cm] {Is non-stationary?};
+        \node (node5) [decision, below of=node4, yshift=-3cm] {Is spread far from mean?};
+        \node (node6) [process, below of=node5, yshift=-1.5cm] {Re-scale spread $\tilde z \in [0, 1]$};
+        \node (node7) [process, below of=node6] {Apply momentum detection$^\star$};
+        \node (node8) [decision, below of=node7, yshift=-1.5cm] {Is significant?};
+        \node (node9) [io, below of=node8, yshift=-1.5cm] {$\frac{m}{|m|} \cdot \bm{\beta}$};
+
+        \node (node10) [io, right of=node4, xshift=3cm] {$0\cdot \bm{\beta}$};
+        \node (node11) [io, right of=node5, xshift=3cm] {$0\cdot \bm{\beta}$};
+        \node (node12) [io, right of=node8, xshift=3cm] {$0\cdot \bm{\beta}$};
+
+        \draw [arrow] (node0) -- (node1);
+        \draw [arrow] (node1) -- (node2);
+        \draw [arrow] (node2) -- (node3);
+        \draw [arrow] (node3) -- (node4);
+        \draw [arrow] (node4) --node[anchor=west] {N} (node5);
+        \draw [arrow] (node5) --node[anchor=west] {Y} (node6);
+        \draw [arrow] (node6) -- (node7);
+        \draw [arrow] (node7) -- (node8);
+        \draw [arrow] (node8) --node[anchor=west] {Y} (node9);
+
+        \draw [arrow] (node4) --node[anchor=south] {Y} (node10);
+        \draw [arrow] (node5) --node[anchor=south] {N} (node11);
+        \draw [arrow] (node8) --node[anchor=south] {N} (node12);
+    \end{tikzpicture}
+\end{figure}
+
+
+\subsection{Mark 2 (Hybrid)}

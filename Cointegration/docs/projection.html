@@ -1,0 +1,65 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module projection</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>projection</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/tspooner/stratagem-research-base/sgmresearchbase/analysis/cointegration/projection.py">/home/tspooner/stratagem-research-base/sgmresearchbase/analysis/cointegration/projection.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-interpolate"><strong>interpolate</strong></a>(index, values, order<font color="#909090">=3</font>, smoothing<font color="#909090">=1</font>, resolution<font color="#909090">=1</font>)</dt><dd><tt>Interpolate&nbsp;irregular&nbsp;time&nbsp;series&nbsp;and&nbsp;apply&nbsp;a&nbsp;univariate&nbsp;spline.<br>
+&nbsp;<br>
+The&nbsp;process&nbsp;is&nbsp;as&nbsp;follows:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;1)&nbsp;Compute&nbsp;a&nbsp;new,&nbsp;regular&nbsp;index&nbsp;for&nbsp;the&nbsp;time&nbsp;series&nbsp;based&nbsp;on&nbsp;a&nbsp;given<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resolution&nbsp;and&nbsp;the&nbsp;min/max&nbsp;values.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;2)&nbsp;Apply&nbsp;a&nbsp;1d&nbsp;interpolation&nbsp;to&nbsp;the&nbsp;time&nbsp;series&nbsp;to&nbsp;obtain&nbsp;a&nbsp;complete,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;regular&nbsp;time&nbsp;series.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3)&nbsp;Apply&nbsp;a&nbsp;univariate&nbsp;spline&nbsp;to&nbsp;the&nbsp;time&nbsp;series&nbsp;with&nbsp;user-chosen<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arguments&nbsp;for&nbsp;the&nbsp;order&nbsp;and&nbsp;smoothing.<br>
+&nbsp;<br>
+:param&nbsp;index:&nbsp;Vector&nbsp;of&nbsp;times&nbsp;(floats)&nbsp;for&nbsp;the&nbsp;irregular&nbsp;time&nbsp;series.<br>
+:param&nbsp;values:&nbsp;Vector&nbsp;of&nbsp;values&nbsp;associated&nbsp;with&nbsp;times&nbsp;in&nbsp;`index`.<br>
+:param&nbsp;order:&nbsp;The&nbsp;order&nbsp;for&nbsp;the&nbsp;polynomial&nbsp;spline&nbsp;to&nbsp;use.<br>
+:param&nbsp;smoothing:&nbsp;Smoothing&nbsp;factor&nbsp;to&nbsp;use&nbsp;with&nbsp;the&nbsp;spline.<br>
+:param&nbsp;resolution:&nbsp;Interval&nbsp;between&nbsp;points&nbsp;for&nbsp;the&nbsp;new&nbsp;regular&nbsp;time&nbsp;series.<br>
+:return:&nbsp;A&nbsp;regular,&nbsp;interpolated&nbsp;and&nbsp;smoothed&nbsp;time&nbsp;series.</tt></dd></dl>
+ <dl><dt><a name="-project"><strong>project</strong></a>(X, space<font color="#909090">=None</font>)</dt><dd><tt>Project&nbsp;multivariate&nbsp;time&nbsp;series&nbsp;onto&nbsp;cointegration&nbsp;bases.<br>
+&nbsp;<br>
+Projects&nbsp;an&nbsp;N*M&nbsp;multivariate&nbsp;time&nbsp;series&nbsp;into&nbsp;the&nbsp;cointegration&nbsp;space&nbsp;given<br>
+by&nbsp;M*R&nbsp;cointegration&nbsp;basis&nbsp;vector;&nbsp;if&nbsp;no&nbsp;basis&nbsp;is&nbsp;provided&nbsp;(space&nbsp;argument)<br>
+then&nbsp;one&nbsp;will&nbsp;be&nbsp;computed&nbsp;using&nbsp;the&nbsp;Johansen&nbsp;method&nbsp;assuming&nbsp;rank&nbsp;1.&nbsp;Here&nbsp;N<br>
+refers&nbsp;to&nbsp;the&nbsp;number&nbsp;of&nbsp;observations,&nbsp;M&nbsp;to&nbsp;the&nbsp;number&nbsp;of&nbsp;markets&nbsp;(time<br>
+series)&nbsp;and&nbsp;R&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;cointegrating&nbsp;bases.<br>
+&nbsp;<br>
+:param&nbsp;X:&nbsp;Multivariate&nbsp;time&nbsp;series&nbsp;where&nbsp;rows&nbsp;are&nbsp;observations.<br>
+:param&nbsp;space:&nbsp;Cointegration&nbsp;basis.<br>
+:return:&nbsp;Matrix&nbsp;(N*R)&nbsp;of&nbsp;spread&nbsp;series&nbsp;(R&nbsp;&gt;=&nbsp;1).</tt></dd></dl>
+ <dl><dt><a name="-rescale"><strong>rescale</strong></a>(ts, limits<font color="#909090">=(0, 1)</font>)</dt><dd><tt>Normalise&nbsp;M,&nbsp;N-dimensional&nbsp;time&nbsp;series&nbsp;to&nbsp;the&nbsp;limits&nbsp;provided.<br>
+&nbsp;<br>
+Each&nbsp;of&nbsp;the&nbsp;M&nbsp;time&nbsp;series&nbsp;are&nbsp;normalised&nbsp;using&nbsp;the&nbsp;max&nbsp;and&nbsp;min,&nbsp;indpendent<br>
+of&nbsp;each&nbsp;other.&nbsp;This&nbsp;operation&nbsp;is&nbsp;merely&nbsp;applied&nbsp;along&nbsp;each&nbsp;column<br>
+one-by-one.<br>
+&nbsp;<br>
+:param&nbsp;ts:&nbsp;An&nbsp;(N*M)&nbsp;time&nbsp;series&nbsp;where&nbsp;rows&nbsp;are&nbsp;observations.<br>
+:return:&nbsp;Rescaled&nbsp;matrix&nbsp;(N*M).</tt></dd></dl>
+</td></tr></table>
+</body></html>

@@ -1,0 +1,46 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module rank</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>rank</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/tspooner/stratagem-research-base/sgmresearchbase/analysis/cointegration/rank.py">/home/tspooner/stratagem-research-base/sgmresearchbase/analysis/cointegration/rank.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-empirical"><strong>empirical</strong></a>(X, num_lags<font color="#909090">=2</font>)</dt><dd><tt>Estimates&nbsp;the&nbsp;number&nbsp;of&nbsp;stationary&nbsp;projections&nbsp;of&nbsp;the&nbsp;multivariate&nbsp;I(1)<br>
+time&nbsp;series,&nbsp;given&nbsp;an&nbsp;assumed&nbsp;lead&nbsp;lag&nbsp;relationship&nbsp;(num&nbsp;lags),&nbsp;by<br>
+identification&nbsp;of&nbsp;unit&nbsp;roots&nbsp;using&nbsp;the&nbsp;ADF&nbsp;test.<br>
+&nbsp;<br>
+:param&nbsp;X:&nbsp;Multivariate&nbsp;(M-dimensional)&nbsp;time&nbsp;series&nbsp;of&nbsp;length&nbsp;T.<br>
+:param&nbsp;num_lags:&nbsp;Number&nbsp;of&nbsp;lead-lag&nbsp;terms&nbsp;used&nbsp;to&nbsp;compute&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;autocovariance&nbsp;matrix&nbsp;W.<br>
+:return:&nbsp;Cointegration&nbsp;rank&nbsp;estimate.</tt></dd></dl>
+ <dl><dt><a name="-johansen"><strong>johansen</strong></a>(X, model<font color="#909090">=0</font>)</dt><dd><tt>Identify&nbsp;if&nbsp;any&nbsp;cointegrating&nbsp;relationships&nbsp;exist&nbsp;between&nbsp;multivariate&nbsp;I(1)<br>
+time&nbsp;series&nbsp;and&nbsp;return&nbsp;the&nbsp;estimated&nbsp;cointegration&nbsp;rank&nbsp;using&nbsp;the&nbsp;Johansen<br>
+trace&nbsp;test.<br>
+&nbsp;<br>
+:param&nbsp;X:&nbsp;Multivariate&nbsp;(M-dimensional)&nbsp;time&nbsp;series&nbsp;of&nbsp;length&nbsp;T.<br>
+:param&nbsp;model:&nbsp;Regression&nbsp;model&nbsp;used&nbsp;in&nbsp;performing&nbsp;the&nbsp;trace&nbsp;test&nbsp;(see<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sgmresearchbase.coint.johansen.Johansen).<br>
+:return:&nbsp;Cointegration&nbsp;rank&nbsp;estimate.</tt></dd></dl>
+</td></tr></table>
+</body></html>

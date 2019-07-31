@@ -1,0 +1,93 @@
+\documentclass[a4paper]{scrreprt}
+
+\input{src/preamble}
+
+% Definitions:
+\newcommand{\Lay}{\mathrm{l}}
+\newcommand{\Back}{\mathrm{b}}
+
+\newcommand{\Price}{P}
+
+\newcommand\todoin[2][]{\todo[inline, caption={2do}, #1]{%
+    \begin{minipage}{\textwidth-4pt}#2\end{minipage}}}
+
+\newcommand\figwidth{0.9\textwidth}
+
+
+\title{Cointegration Strategy}
+\subtitle{Technical Report}
+
+\author{Stratagem Technologies}
+
+
+\begin{document}
+\maketitle
+
+
+\chapter{Background}
+\input{src/background}
+
+
+\chapter{Basis Estimation}
+\input{src/basis_est}
+
+
+\chapter{Strategies}\label{ch:signals}
+\section{Common}
+Thus far, the strategies have been constrained to multi-sport variants, none
+have been specific to a single sport; though the next step would be to exploit
+any causal relationship between the cointegration spread of basketball team
+scores and market prices. These are all located in the
+\mintinline{python}{stratagem-systematic} repository. Some of the common
+utilities that you should probably make use are also in the
+\mintinline{python}{stratagem-research-base} repo. The main ones to use and extend are:
+\begin{enumerate}
+    \item \mintinline{python}{OnlineCointegrationModelProvider} --- This
+        utility (see sgmsystematic/trading/providers/model) takes tick data as
+        input (not necessarily prices) and return the basis vectors for each of
+        the stickers in the group. It makes use of the static methods in the
+        \mintinline{python}{CointegrationTradingSignalService} class ( see
+        sgmresearchbase/analysis/cointegration).
+    \item \mintinline{python}{MPCSignalGenerator} --- This is the main
+        component used to generate trading signals for the MPC trading
+        strategy. It makes use of subclasses of the
+        \mintinline{python}{CointegrationTradingSignalService} class and
+        converts tick data into bases and finally into a directional trading
+        signal to be used by the trader.
+    \item \mintinline{python}{Portfolio} --- This class keeps track of a
+        position opened on multiple markets and computes the expected return
+        given any partial/full executions and the current market prices. It
+        also has some utility plotting methods which are especially useful for
+        debugging and evaluating performance online.
+\end{enumerate}
+
+I've included as many useful utilties for generating signals, tracking ticks
+and smoothing estimations, etc, in the research base repo. All are fully
+documented and tested. I would advise going over the MPC strategy first and
+getting an idea about the pipeline to convert tick data into an actual trading
+strategy. The next task will likely want to be to incorporate the improved
+estimator (for which there are many possible parameterisations) and to build
+and investigate a strategy deriving from the team scores and exploiting causul
+relationships with the market.
+
+\subsection{Notes from discussions with Gareth}
+Some of the main points are:
+\begin{enumerate}
+    \item Improve the mean reversion signal by using robustified Bollinger
+        bands and/or control charts rather than a simple estimation of the
+        mean.
+    \item Investigate the best ways to sample the team scores and thus the
+        market prices.
+    \item Investigate causality between scores and prices using Granger
+        causality and/or an explicit model of the lead-lag relationship.
+\end{enumerate}
+
+\input{src/mpc}
+
+
+\appendix
+\chapter{Appendix}
+\section{Preliminary Evaluation}
+\input{src/preliminary_evaluation.tex}
+
+\end{document}

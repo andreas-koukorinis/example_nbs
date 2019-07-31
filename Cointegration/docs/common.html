@@ -1,0 +1,74 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module common</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>common</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/tspooner/stratagem-research-base/sgmresearchbase/analysis/cointegration/common.py">/home/tspooner/stratagem-research-base/sgmresearchbase/analysis/cointegration/common.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-adf"><strong>adf</strong></a>(ts, max_d<font color="#909090">=6</font>, reg<font color="#909090">='nc'</font>, autolag<font color="#909090">='AIC'</font>)</dt><dd><tt>Alias&nbsp;to&nbsp;the&nbsp;ADF&nbsp;test&nbsp;method&nbsp;provided&nbsp;by&nbsp;the&nbsp;statsmodels&nbsp;package.<br>
+&nbsp;<br>
+The&nbsp;function&nbsp;applies&nbsp;some&nbsp;reasonable&nbsp;defaults&nbsp;and&nbsp;just&nbsp;returns&nbsp;the&nbsp;output<br>
+as-is.<br>
+&nbsp;<br>
+:param&nbsp;ts:&nbsp;Univariate&nbsp;time&nbsp;series.<br>
+:param&nbsp;max_d:&nbsp;Number&nbsp;of&nbsp;autoregressive&nbsp;lag&nbsp;terms&nbsp;to&nbsp;consider.<br>
+:param&nbsp;reg:&nbsp;Regression&nbsp;model&nbsp;to&nbsp;use.<br>
+:param&nbsp;autolag:&nbsp;Autolag&nbsp;method&nbsp;to&nbsp;use.<br>
+:return:&nbsp;ADF&nbsp;statistics.</tt></dd></dl>
+ <dl><dt><a name="-hurst_naive"><strong>hurst_naive</strong></a>(ts, lags<font color="#909090">=[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, ...]</font>)</dt><dd><tt>Compute&nbsp;the&nbsp;Hurst&nbsp;exponent&nbsp;for&nbsp;a&nbsp;given&nbsp;time&nbsp;series.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;a&nbsp;very&nbsp;simple,&nbsp;but&nbsp;common,&nbsp;method&nbsp;for&nbsp;estimating&nbsp;H.&nbsp;In&nbsp;the&nbsp;vast<br>
+majority&nbsp;of&nbsp;cases&nbsp;it&nbsp;produces&nbsp;a&nbsp;sufficient&nbsp;estimation,&nbsp;though&nbsp;it&nbsp;ma&nbsp;be<br>
+worth&nbsp;using&nbsp;the&nbsp;Variance&nbsp;ratio&nbsp;test&nbsp;to&nbsp;be&nbsp;sure&nbsp;that&nbsp;H&nbsp;!=&nbsp;0.5&nbsp;(i.e.&nbsp;a&nbsp;random<br>
+walk)&nbsp;is&nbsp;statistically&nbsp;signficiant.<br>
+&nbsp;<br>
+:param&nbsp;ts:&nbsp;Univariate&nbsp;time&nbsp;series.<br>
+:param&nbsp;lags:&nbsp;Lag&nbsp;terms&nbsp;to&nbsp;consider&nbsp;in&nbsp;the&nbsp;fit&nbsp;process.<br>
+:return:&nbsp;The&nbsp;Hurst&nbsp;exponent,&nbsp;H.</tt></dd></dl>
+ <dl><dt><a name="-is_nonstationary"><strong>is_nonstationary</strong></a>(ts, crit<font color="#909090">='5%'</font>, max_d<font color="#909090">=6</font>, reg<font color="#909090">='nc'</font>, autolag<font color="#909090">='AIC'</font>)</dt><dd><tt>Check&nbsp;if&nbsp;a&nbsp;given&nbsp;time&nbsp;series&nbsp;is&nbsp;non-stationary&nbsp;to&nbsp;some&nbsp;given&nbsp;critical<br>
+level.<br>
+&nbsp;<br>
+Returns&nbsp;False&nbsp;if&nbsp;we&nbsp;may&nbsp;reject&nbsp;the&nbsp;null&nbsp;hypothesis&nbsp;that&nbsp;the&nbsp;time&nbsp;series&nbsp;has<br>
+a&nbsp;unit&nbsp;root&nbsp;(a&nbsp;requirement&nbsp;of&nbsp;non-stationarity)&nbsp;with&nbsp;a&nbsp;probability&nbsp;95%&nbsp;or<br>
+greater,&nbsp;other-&nbsp;wise&nbsp;returns&nbsp;True.&nbsp;Note&nbsp;that&nbsp;a&nbsp;False&nbsp;result&nbsp;does&nbsp;not&nbsp;mean<br>
+that&nbsp;the&nbsp;time&nbsp;series&nbsp;is&nbsp;definitively&nbsp;stationary,&nbsp;merely&nbsp;that&nbsp;we&nbsp;are<br>
+confident&nbsp;that&nbsp;it&nbsp;is&nbsp;not&nbsp;non-stationary.<br>
+&nbsp;<br>
+:param&nbsp;ts:&nbsp;Univariate&nbsp;time&nbsp;series.<br>
+:param&nbsp;crit:&nbsp;Frequentist&nbsp;significane&nbsp;level.<br>
+:param&nbsp;max_d:&nbsp;Number&nbsp;of&nbsp;autoregressive&nbsp;lag&nbsp;terms&nbsp;to&nbsp;consider.<br>
+:param&nbsp;reg:&nbsp;Regression&nbsp;model&nbsp;to&nbsp;use.<br>
+:param&nbsp;autolag:&nbsp;Autolag&nbsp;method&nbsp;to&nbsp;use.<br>
+:return:&nbsp;True&nbsp;if&nbsp;time&nbsp;series&nbsp;is&nbsp;found&nbsp;non-stationary&nbsp;at&nbsp;the&nbsp;critical&nbsp;value.</tt></dd></dl>
+ <dl><dt><a name="-null"><strong>null</strong></a>(A, eps<font color="#909090">=1e-12</font>)</dt><dd><tt>Compute&nbsp;the&nbsp;null&nbsp;space&nbsp;of&nbsp;a&nbsp;given,&nbsp;real&nbsp;matrix&nbsp;A.<br>
+&nbsp;<br>
+:param&nbsp;A:&nbsp;Any&nbsp;real&nbsp;matrix.<br>
+:param&nbsp;eps:&nbsp;Singular&nbsp;value&nbsp;tolerance.<br>
+:return:&nbsp;Null&nbsp;space&nbsp;of&nbsp;A.</tt></dd></dl>
+ <dl><dt><a name="-orthmat"><strong>orthmat</strong></a>(n)</dt><dd><tt>Generate&nbsp;a&nbsp;random&nbsp;orthonormal&nbsp;matrix&nbsp;with&nbsp;dimensions&nbsp;n*n.<br>
+&nbsp;<br>
+:param&nbsp;n:&nbsp;The&nbsp;size&nbsp;of&nbsp;the&nbsp;output&nbsp;matrix.<br>
+:return:&nbsp;A&nbsp;random&nbsp;n*n&nbsp;orthonormal&nbsp;matrix.</tt></dd></dl>
+</td></tr></table>
+</body></html>
